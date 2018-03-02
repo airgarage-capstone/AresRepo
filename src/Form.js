@@ -118,6 +118,40 @@ class Form extends React.Component {
                     <br />   <br />
 
                 </form>
+           
+        
+
+                <img src={aglogo} className="logoPic" alt="aglogo" />
+                <h1 className="FormTitle">Log In</h1>
+
+
+
+
+
+                <form onSubmit={this.handleSubmit}>
+                    <p className="align">
+
+                        Email
+                    <br />
+                        <label>
+                            <input className="middle" type="email" name="email" placeholder="easyPark@example.com" />
+                        </label>  <br />  <br />
+
+
+                        Password
+                    <br />
+                        <label>
+                            <input className="middle" type="password" name="password" placeholder="********" />
+                        </label> <br />   <br />
+
+                    </p>
+
+
+
+                    <input className="middle" type="submit" value="Log In" />
+                    <br />   <br />
+
+                </form>
             </div>
         );
     }

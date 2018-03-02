@@ -38,7 +38,7 @@ class login extends React.Component {
         return (
 
             
-            <div className="Form">
+            <div className="login">
                 
                 <img src={aglogo} className="logoPic" alt="aglogo" />
                 <h1 className="FormTitle">Log In</h1>
