@@ -1,5 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
+
 .FormTitle {
     color: #3c91e6;
     font-size: 40px;
@@ -14,22 +15,17 @@
     margin: auto;
     border-style: solid;
     text-align: center;
-    
     border-radius: 50px;
+   
 }
 
 .align {
     text-align: center;
     font-size: 15px;
-   
-
-
 }
 
 .div {
     align-items: center;
-
-    
 }
 
 .logoPic {
@@ -42,5 +38,3 @@
     align-content: center;
     border-radius: 25px;
 }
-
-
