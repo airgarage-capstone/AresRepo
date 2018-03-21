@@ -36,11 +36,12 @@ class Form extends React.Component {
         this.setState({ value: event.target.value });
     } 
 
+
     render() {
         return (
 
             
-            <div className="Form">
+            <div className="splitForm">
 
                 <img src={aglogo} className="logoPic" alt="aglogo" />
                 <h1 className="FormTitle">Sign Up</h1>
@@ -48,14 +49,16 @@ class Form extends React.Component {
               
                
                
-
+          
                 <form onSubmit={this.handleSubmit}>
+
+                    <div className="container clearfix">
                     <p className="align">
 
 
                      First Name
                     <br />
-                    <label >
+                    <label>
                             <input className="middle" type="text" name="first name"  />
                             
                     </label><br /> <br />
@@ -117,41 +120,12 @@ class Form extends React.Component {
                     <input className="middle" type="submit" value="Sign Up"  />
                     <br />   <br />
 
+                </div>
                 </form>
            
         
 
-                <img src={aglogo} className="logoPic" alt="aglogo" />
-                <h1 className="FormTitle">Log In</h1>
-
-
-
-
-
-                <form onSubmit={this.handleSubmit}>
-                    <p className="align">
-
-                        Email
-                    <br />
-                        <label>
-                            <input className="middle" type="email" name="email" placeholder="easyPark@example.com" />
-                        </label>  <br />  <br />
-
-
-                        Password
-                    <br />
-                        <label>
-                            <input className="middle" type="password" name="password" placeholder="********" />
-                        </label> <br />   <br />
-
-                    </p>
-
-
-
-                    <input className="middle" type="submit" value="Log In" />
-                    <br />   <br />
-
-                </form>
+                
             </div>
         );
     }

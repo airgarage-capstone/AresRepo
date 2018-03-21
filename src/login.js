@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import aglogo from './logoPic.png';
-import './Form.css';
+
 import './login.css';
 
 class login extends React.Component {
@@ -38,7 +38,7 @@ class login extends React.Component {
         return (
 
             
-            <div className="login">
+            <div className="splitForm">
                 
                 <img src={aglogo} className="logoPic" alt="aglogo" />
                 <h1 className="FormTitle">Log In</h1>
@@ -46,8 +46,10 @@ class login extends React.Component {
 
 
 
+               
+                <login onSubmit={this.handleSubmit}>
 
-                <form onSubmit={this.handleSubmit}>
+                    <div className="container clearfix">
                     <p className="align">
                         
                         Email
@@ -70,7 +72,8 @@ class login extends React.Component {
                     <input className="middle" type="submit" value="Log In" />
                     <br />   <br />
 
-                </form>
+                 </div>
+                </login>
             </div>
         );
     }

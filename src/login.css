@@ -1,13 +1,15 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 
-.FormTitle {
+
+
+#root .FormTitle {
     color: #3c91e6;
     font-size: 40px;
     font-family: "Ubuntu";
 }
 
-.App {
+#root .App {
     color: #ffffff;
     background-color: #fa824c;
     font-family: "Ubuntu";
@@ -16,25 +18,40 @@
     border-style: solid;
     text-align: center;
     border-radius: 50px;
-   
 }
 
-.align {
+#root .align {
     text-align: center;
     font-size: 15px;
 }
 
-.div {
+#root .div {
     align-items: center;
 }
 
-.logoPic {
+#root .logoPic {
     height: 100px;
     background-color: #ffffff;
     border-radius: 50px;
 }
 
-.middle {
+#root .middle {
     align-content: center;
     border-radius: 25px;
+}
+
+#root .splitForm {
+    width: 50%;
+    border-radius: 25px;
+    display: inline-block;
+    margin: 25px;
+}
+#root .container {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Ubuntu;
 }
