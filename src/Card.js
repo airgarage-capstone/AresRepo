@@ -9,6 +9,9 @@ class Card extends React.Component {
             spotName: props.spotName,
             spotPrice: props.spotPrice,
             spotAddress: props.spotAddress,
+            spotCity: props.city,
+            spotState: props.state,
+            spotZipcode: props.spotZipcode,
             spotQuantity: props.spotQuantity,
             spotAvailable: props.spotAvailable,
             spotPic: require('./logoPic.png')
@@ -18,7 +21,7 @@ class Card extends React.Component {
 
     render() {
         return (
-            <div className='Form'>
+            <div>
 
                 <div className='cardSplit'>
                     <img src={this.state.spotPic} className="logoPic" alt="aglogo" />/>
@@ -40,6 +43,24 @@ class Card extends React.Component {
                     </div>
 
                     <div>
+                        <th>City: </th>
+                        <td>{this.props.spotCity}</td>
+                        <br />
+                    </div>
+
+                    <div>
+                        <th>State: </th>
+                        <td>{this.props.spotState}</td>
+                        <br />
+                    </div>
+
+                    <div>
+                        <th>ZipCode: </th>
+                        <td>{this.props.spotZipcode}</td>
+                        <br />
+                    </div>
+
+                    <div>
                         <th>Spots Available: </th>
                         <td>{this.props.spotQuantity}</td>
                         <br />   
@@ -47,7 +68,7 @@ class Card extends React.Component {
 
                     <div>
                         <th>Availiable 24/7: </th>
-                        <td>{this.props.spotAvailable}</td>
+                        <td>{this.props.spotAvailable ? "Available 24/7" : "Not Available 24/7"}</td>
                         <br />   
                     </div>
                   

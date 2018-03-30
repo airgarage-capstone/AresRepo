@@ -14,10 +14,12 @@
     background-color: #fa824c;
     font-family: "Ubuntu";
     width: 350px;
-    margin: auto;
+    margin:auto;
     border-style: solid;
     text-align: center;
     border-radius: 50px;
+    padding-left:10px;
+    padding-right:10px;
 }
 
 #root .align {
@@ -25,9 +27,7 @@
     font-size: 15px;
 }
 
-#root .div {
-    align-items: center;
-}
+
 
 #root .logoPic {
     height: 100px;
@@ -43,7 +43,7 @@
     #root .splitForm {
         width: 50%;
         border-radius: 25px;
-        display: inline-block;
+        display:block;
         margin: 25px;
     }
 
