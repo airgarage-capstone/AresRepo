@@ -3,8 +3,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import aglogo from './logoPic.png';
+import axios from 'axios';
 
-import './login.css';
+import './Form.css';
 
 class login extends React.Component {
     constructor(props) {
@@ -13,11 +14,16 @@ class login extends React.Component {
         // this.state = { value: 'I will be using AirGarage to...' };
 
         this.state = {
-          
-            email: '',
-            password: '',
-           
-        }
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            dob: "",
+            phone: "",
+            
+            accountType: ""
+        
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -25,14 +31,49 @@ class login extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('Account Not Found');
+        //alert('Account Not Found');
         event.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
+
+        const user =
+        {
+            username: this.state.email,
+            password: this.state.password
+        };
+
+        axios.post('http://staging.airgara.ge/api/auth/', user).then(response => 
+        {
+            alert("Login Successful!");
+
+        })
+
+        .catch(error => 
+        {
+            //alert("Account Not Found");
+            var errorResponse = "Account Not Found";
+
+            for(var key in error.response.data) {
+                errorResponse += key;
+                errorResponse += ': ';
+                errorResponse += error.response.data[key];
+                errorResponse += '\n';
+            }
+                alert(errorResponse);
+                console.log(error.response.data);
+        });
     }
 
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        const target = event.target;
+        const name = target.name;
+       const value = target.value;
+        this.setState({ value: target.value });
+
+        this.setState({ [name]: value});
     }
+
+  
+
 
     render() {
         return (
@@ -50,26 +91,28 @@ class login extends React.Component {
                 <login onSubmit={this.handleSubmit}>
 
                     <div className="container clearfix">
-                    <p className="align">
+                  
                         
                         Email
                     <br />
                         <label>
-                            <input className="middle" type="email" name="email" placeholder="easyPark@example.com" />
+                            <input className="loginMiddle" type="email" name="email" placeholder="easyPark@example.com" 
+                            value={this.state.email} onChange={this.handleChange} name="email"/>
                         </label>  <br />  <br />
 
 
                         Password
                     <br />
                         <label>
-                            <input className="middle" type="password" name="password" placeholder="********" />
+                            <input className="loginMiddle" type="password" name="password" placeholder="********"
+                            value={this.state.password} onChange={this.handleChange}  name="password"/>
                         </label> <br />   <br />
 
-                    </p>
+                
 
                
 
-                    <input className="middle" type="submit" value="Log In" />
+                    <input className="loginButton" type="submit" value="Log In" onChange={this.handleChange}  />
                     <br />   <br />
 
                  </div>

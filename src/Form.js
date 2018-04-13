@@ -2,6 +2,7 @@
 import logo from './logo.svg';
 import aglogo from './logoPic.png';
 import './Form.css';
+import axios from 'axios';
 
 
 class Form extends React.Component {
@@ -12,28 +13,80 @@ class Form extends React.Component {
         // this.state = { value: 'I will be using AirGarage to...' };
 
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            dob: '',
-            phone: '',
-            profile: ''
-        }
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            dob: "",
+            phone: "",
+        
+            accountType: "",
+            entityType: ""
+           
+        };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInputChange= this.handleInputChange.bind(this);
       
     }
 
     handleSubmit(event) {
-        alert('AirGarage READY' + this.state.firstName);
+        alert('AirGarage getting READY for ' + this.state.firstName);
         event.preventDefault();
-        console.log(this.state);
+        //console.log(this.state);
+
+        
+
+        const user = 
+        {   
+            first_name : this.state.firstName,
+            last_name: this.state.lastName,
+            username: this.state.email,
+            password: this.state.password,
+            accountType: this.state.accountType, 
+            dob: this.state.dob,
+             phone: this.state.phone, 
+             entityType: this.state.entityType
+
+        };
+
+        
+
+        axios.post('http://staging.airgara.ge/api/register/', user).then(response => 
+        {
+            alert("Sign-up Completed for" + this.state.firstName);
+        })
+        
+            //alert('AirGarage READY' + this.state.firstName);
+        
+
+    .catch(error => 
+        {
+            //alert('Sign-up Failed');
+            var errorResponse = "Sign-up Failed";
+
+            for(var key in error.response.data) {
+                errorResponse += key;
+                errorResponse += ': ';
+                errorResponse += error.response.data[key];
+                errorResponse += '\n';
+            }
+                alert(errorResponse);
+                console.log(error.response.data);
+        });
+      
+
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    handleInputChange(event) {
+        console.log("handle Change");
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+      
+        //this.setState({ value: target.value });
+
+        this.setState({ [name]: value});
     } 
 
 
@@ -46,20 +99,18 @@ class Form extends React.Component {
                 <img src={aglogo} className="logoPic" alt="aglogo" />
                 <h1 className="FormTitle">Sign Up</h1>
 
-              
-               
-               
-          
+
                 <form onSubmit={this.handleSubmit}>
 
                     <div className="container clearfix">
-                    <p className="align">
+                   
 
 
                      First Name
                     <br />
                     <label>
-                            <input className="middle" type="text" name="first name"  />
+                            <input className="middle" type="text" name="firstName" 
+                                value={this.state.firstName} onChange={this.handleInputChange}  />
                             
                     </label><br /> <br />
                   
@@ -67,57 +118,63 @@ class Form extends React.Component {
                      Last Name 
                     <br />
                     <label>
-                            <input className="middle" type="text" name="last name" />
+                            <input className="middle" type="text" name="lastName"
+                             value={this.state.lastName} onChange={this.handleInputChange}  />
                     </label> <br />   <br />
 
 
                     Email 
                     <br />
                     <label>
-                            <input className="middle" type="email" name="email" placeholder="easyPark@example.com" />
+                            <input className="middle" type="email" name="email" placeholder="easyPark@example.com" 
+                             value={this.state.email} onChange={this.handleInputChange} />
                     </label>  <br />  <br /> 
 
 
                      Password
                     <br />
                     <label>
-                            <input className="middle" type="password" name="password" placeholder="********" />
+                            <input className="middle" type="password" name="password" placeholder="********" 
+                             value={this.state.password} onChange={this.handleInputChange} />
                     </label> <br />   <br />
 
                      Phone Number 
                         <br />
                     <label>
-                            <input className="middle" type="text" placeholder="(xxx) xxx-xxxx"/>
+                            <input className="middle" type="number" placeholder="(xxx) xxx-xxxx" name="phone"
+                             value={this.state.phone} onChange={this.handleInputChange} />
                     </label>  <br />  <br />
                    
 
                     Date of Birth
                         <br />
                     <label>
-                            <input className="middle" type="date" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="mm/dd/yyyy" />
+                            <input className="middle" type="date" required pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" placeholder="mm/dd/yyyy" name="dob"
+                             value={this.state.dob} onChange={this.handleInputChange} />
                     </label> <br />   <br />
 
 
                     Profile Account Type
                         <br />
                     <label>
-                            <select className="middle" value={this.state.value} onChange={this.handleChange}>
-                            <option value="findParking">Find Parking</option>
-                            <option value="listaSpot">List a Spot</option>
-                            <option value="both">Both</option>
+                            <select className="middle" name="accountType" onChange={this.handleInputChange}>
+                            <option value="" selected disabled>Choose option</option>
+                            <option value="Find parking">Find Parking</option>
+                            <option  value="List a spot">List a Spot</option>
+                            <option  value="Both">Both</option>
                         </select>
-                    </label> <br />  
+                    </label> <br />  <br />
                    
 
-                    </p>
+              
 
-                    <input className="middle" type="checkbox" name="terms" /> 
+                    <input type="checkbox" name="terms" /> 
                     <label>
                          Agree to terms and conditions
                     </label> <br />   <br />
                    
 
-                    <input className="middle" type="submit" value="Sign Up"  />
+                    <input className="button" type="submit" value="Sign Up" onChange={this.handleInputChange}  />
                     <br />   <br />
 
                 </div>
